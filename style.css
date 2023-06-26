@@ -119,10 +119,17 @@ footer {
 
 #index img {
     width: 50%;
+    max-width: 450px; 
+    max-height: 612px; 
     height: auto;
     object-fit: cover;
     display: block;
     margin: 0 auto;
+    align-self: center;
+}
+
+#index h2 {
+    text-align: center;
 }
 
 #team {
