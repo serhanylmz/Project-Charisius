@@ -147,21 +147,43 @@
     </section>
 
     <section id="contribute">
-        <h2>Contribute</h2>
-        <p>Here will be the section where the users can contribute to the project.</p>
-        <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name">
-            <label for="surname">Surname:</label>
-            <input type="text" id="surname" name="surname">
-            <label for="email">Email:</label>
-            <input type="text" id="email" name="email">
-            <label for="query">Query:</label>
-            <input type="text" id="query" name="query">
-            <!-- Add more form fields as needed -->
-            <input type="submit" value="Submit">
-        </form>
+        <div class="half-section" id="location">
+            <h2>Our Location</h2>
+            <p>We are located in the 3rd floor of the INR building at EPFL Lausanne Campus!</p>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d171.59264420879026!2d6.562653859977199!3d46.51835707756426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c30fce76c0113%3A0x26905d6a7e370bb2!2sINR%2C%20Rte%20J-D.Colladon%2C%201015%20Ecublens!5e0!3m2!1str!2sch!4v1687793623766!5m2!1str!2sch" width="80%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+    
+        </div>
+        <div class="half-section" id="contribution-form">
+            <h2>Contribute</h2>
+            <p>Please reach us from the form below for contributions!</p>
+            <div class="form-row">
+                <form action="https://formspree.io/f/meqbjgon" method="POST">
+                    <div class="form-field">
+                        <label for="name">Name: </label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="surname">Surname: </label>
+                        <input type="text" id="surname" name="surname" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="email">Email: </label>
+                        <input type="text" id="email" name="email" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="query">Query: </label>
+                        <input type="text" id="query" name="query" required>
+                    </div>
+                    <!-- Add more form fields as needed -->
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            
+        </div>
     </section>
+    
 
     <footer>
         <p>Copyright - 2023 - Distributed Computing Lab @ École polytechnique fédérale de Lausanne</p>
