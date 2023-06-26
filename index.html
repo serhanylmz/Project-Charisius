@@ -6,7 +6,22 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="favicon-32x32.png" type="image/png">
+    <link rel="icon" href="favicon-32x32-black.png" id="favicon">
+    <script>
+        function setFavicon() {
+        const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const favicon = document.getElementById('favicon');
+        
+        if (isDarkMode) {
+            favicon.href = 'favicon-32x32-white.png';
+        } else {
+            favicon.href = 'favicon-32x32-black.png';
+        }
+        }
+        setFavicon();
+        window.matchMedia('(prefers-color-scheme: dark)').addListener(setFavicon);
+        window.matchMedia('(prefers-color-scheme: light)').addListener(setFavicon);
+    </script>
 </head>
 <body>
     <header>
