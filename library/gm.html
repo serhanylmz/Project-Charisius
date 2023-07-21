@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Krum - Charisius Library Documentation</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+    </head>
+    <body>
+        <script>hljs.highlightAll();</script>
+        <div class="container">
+            <div class="sidebar">
+                <!-- Start of Sidebar -->
+                <h2>Documentation</h2>
+                <ul>
+                    <li><a href="getting_started.html">Getting Started</a></li>
+                    <li><a href="krum.html">Krum</a></li>
+                    <li><a href="multi_krum.html">Multi Krum</a></li>
+                    <li><a href="nnm.html">Nearest-Neighbor-Mixing</a></li>
+                    <li><a href="gm.html">Geometric Median</a></li>
+                    <li><a href="bucketing.html">Bucketing</a></li>
+                    <li><a href="cc.html">Centered-Clipping</a></li>
+                    <li><a href="monna.html">MoNNA</a></li>
+                    <li><a href="https://www.serhanyilmaz.org/Project-Charisius/">Back to Main Page</a></li>
+                    <!-- Add more functions as required -->
+                </ul>
+                <!-- End of Sidebar -->
+            </div>
+
+            <div class="content">
+                <!-- Start of Main Content Area -->
+                <h2>Geometric Median Function</h2>
+                <p>Here's how to use the Geometric Median function:</p>
+
+                <pre><code class="language-python">
+                # Import the library
+                import charisius
+
+                # Initialize data
+                data = [...]
+
+                # Call Geometric Median function
+                result = charisius.geometric_median(data, f)
+                </code></pre>
+
+                <h3>Inputs</h3>
+                <ul>
+                    <li><code>data</code>: array - The data to be processed.</li>
+                    <li><code>f</code>: integer - The parameter to modify the function's behavior.</li>
+                </ul>
+
+                <h3>Outputs</h3>
+                <ul>
+                    <li><code>result</code>: array - The processed data.</li>
+                </ul>
+
+                <!-- Navigation -->
+                <div class="navigation">
+                    <a href="nnm.html" class="prev">Previous</a>
+                    <a href="bucketing.html" class="next">Next</a>
+                </div>
+
+                <!-- End of Main Content Area -->
+            </div>
+        </div>
+    </body>
+</html>
