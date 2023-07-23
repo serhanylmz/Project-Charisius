@@ -5,6 +5,7 @@
         <link rel="stylesheet" type="text/css" href="styles.css">
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
         <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
     </head>
     <body>
         <script>hljs.highlightAll();</script>
@@ -29,38 +30,291 @@
 
             <div class="content">
                 <!-- Start of Main Content Area -->
-                <h2>Centered-Clipping Function</h2>
-                <p>Here's how to use the Centered-Clipping function:</p>
+                <h2>Centered Clipping Function</h2>
+                <p>Here's how to use the Centered Clipping function:</p>
 
                 <pre><code class="language-python">
                 # Import the library
                 import charisius
 
-                # Initialize data
-                data = [...]
+                # Initialize aggregator and vectors
+                aggregator = ...
+                vectors = [...]
 
-                # Call Centered-Clipping function
-                result = charisius.cc(data, f)
+                # Call centered_clipping function
+                result_old = charisius.centered_clipping_old(aggregator, vectors)
+                result_new = charisius.centered_clipping(aggregator, vectors)
                 </code></pre>
+
+                <br>
 
                 <h3>Inputs</h3>
                 <ul>
-                    <li><code>data</code>: array - The data to be processed.</li>
-                    <li><code>f</code>: integer - The parameter to modify the function's behavior.</li>
+                    <li><code>aggregator</code>: object - The aggregator object containing the 'prev_momentum' property.</li>
+                    <li><code>vectors</code>: list - The list of PyTorch Tensors to be processed.</li>
                 </ul>
+
+                <br>
 
                 <h3>Outputs</h3>
                 <ul>
-                    <li><code>result</code>: array - The processed data.</li>
+                    <li><code>result_old, result_new</code>: numpy.ndarray or torch.Tensor - The result vector after applying the centered clipping function.</li>
                 </ul>
+
+
+                <br>
+                <br>
+
+                <h3>Performance Improvement</h3>
+                <p>We have performed several benchmarks to show the improvement in performance of the new Krum function over the old one. Here are the results:</p>
+
+                <!-- You can add a table with benchmark results here -->
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Test Case</th>
+                            <th>Old Function Time</th>
+                            <th>New Function Time</th>
+                            <th>Improvement (x)</th>
+                            <th>Improvement (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>SF</td>
+                            <td>1.00s</td>
+                            <td>0.10s</td>
+                            <td>9.79x</td>
+                            <td>879.18%</td>
+                        </tr>
+                        <tr>
+                            <td>LF</td>
+                            <td>1.00s</td>
+                            <td>0.10s</td>
+                            <td>10.14x</td>
+                            <td>913.75%</td>
+                        </tr>
+                        <tr>
+                            <td>FOE</td>
+                            <td>1.00s</td>
+                            <td>0.11s</td>
+                            <td>9.20x</td>
+                            <td>819.75%</td>
+                        </tr>
+                        <tr>
+                            <td>ALIE</td>
+                            <td>1.00s</td>
+                            <td>0.10s</td>
+                            <td>9.83x</td>
+                            <td>882.95%</td>
+                        </tr>
+                        <tr>
+                            <td>mimic</td>
+                            <td>1.00s</td>
+                            <td>0.10s</td>
+                            <td>10.15x</td>
+                            <td>915.44%</td>
+                        </tr>
+                        <tr>
+                            <td>auto_ALIE</td>
+                            <td>1.00s</td>
+                            <td>0.10s</td>
+                            <td>10.34x</td>
+                            <td>933.87%</td>
+                        </tr>
+                        <tr>
+                            <td>auto_FOE</td>
+                            <td>1.00s</td>
+                            <td>0.10s</td>
+                            <td>10.33x</td>
+                            <td>932.72%</td>
+                        </tr>
+                        <tr>
+                            <td>inf</td>
+                            <td>1.00s</td>
+                            <td>0.10s</td>
+                            <td>10.30x</td>
+                            <td>930.50%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <!-- Dropdown to select a test case -->
+                <select id="testcase-select">
+                    <option value="sf">SF</option>
+                    <option value="lf">LF</option>
+                    <option value="foe">FOE</option>
+                    <option value="alie">ALIE</option>
+                    <option value="mimic">mimic</option>
+                    <option value="auto_alie">auto_ALIE</option>
+                    <option value="auto_foe">auto_FOE</option>
+                    <option value="inf">inf</option>
+                </select>
+                
+                <!-- Canvas to contain the graph -->
+                <canvas id="performance-chart" width="800" height="400"></canvas>
+                
+                <!-- JavaScript to draw and update the graph -->
+                <script>
+                var allData = {
+                    sf: {
+                        labels: ["SF"],
+                        datasets: [
+                            {
+                                label: "Old Function Time",
+                                data: [1.00],
+                                backgroundColor: "rgba(255, 99, 132, 0.2)"
+                            },
+                            {
+                                label: "New Function Time",
+                                data: [0.10],
+                                backgroundColor: "rgba(54, 162, 235, 0.2)"
+                            }
+                        ]
+                    },
+                    lf: {
+                        labels: ["LF"],
+                        datasets: [
+                            {
+                                label: "Old Function Time",
+                                data: [1.00],
+                                backgroundColor: "rgba(255, 99, 132, 0.2)"
+                            },
+                            {
+                                label: "New Function Time",
+                                data: [0.10],
+                                backgroundColor: "rgba(54, 162, 235, 0.2)"
+                            }
+                        ]
+                    },
+                    foe: {
+                        labels: ["FOE"],
+                        datasets: [
+                            {
+                                label: "Old Function Time",
+                                data: [1.00],
+                                backgroundColor: "rgba(255, 99, 132, 0.2)"
+                            },
+                            {
+                                label: "New Function Time",
+                                data: [0.11],
+                                backgroundColor: "rgba(54, 162, 235, 0.2)"
+                            }
+                        ]
+                    },
+                    alie: {
+                        labels: ["ALIE"],
+                        datasets: [
+                            {
+                                label: "Old Function Time",
+                                data: [1.00],
+                                backgroundColor: "rgba(255, 99, 132, 0.2)"
+                            },
+                            {
+                                label: "New Function Time",
+                                data: [0.10],
+                                backgroundColor: "rgba(54, 162, 235, 0.2)"
+                            }
+                        ]
+                    },
+                    mimic: {
+                        labels: ["mimic"],
+                        datasets: [
+                            {
+                                label: "Old Function Time",
+                                data: [1.00],
+                                backgroundColor: "rgba(255, 99, 132, 0.2)"
+                            },
+                            {
+                                label: "New Function Time",
+                                data: [0.10],
+                                backgroundColor: "rgba(54, 162, 235, 0.2)"
+                            }
+                        ]
+                    },
+                    auto_alie: {
+                        labels: ["auto_ALIE"],
+                        datasets: [
+                            {
+                                label: "Old Function Time",
+                                data: [1.00],
+                                backgroundColor: "rgba(255, 99, 132, 0.2)"
+                            },
+                            {
+                                label: "New Function Time",
+                                data: [0.10],
+                                backgroundColor: "rgba(54, 162, 235, 0.2)"
+                            }
+                        ]
+                    },
+                    auto_foe: {
+                        labels: ["auto_FOE"],
+                        datasets: [
+                            {
+                                label: "Old Function Time",
+                                data: [1.00],
+                                backgroundColor: "rgba(255, 99, 132, 0.2)"
+                            },
+                            {
+                                label: "New Function Time",
+                                data: [0.10],
+                                backgroundColor: "rgba(54, 162, 235, 0.2)"
+                            }
+                        ]
+                    },
+                    inf: {
+                        labels: ["inf"],
+                        datasets: [
+                            {
+                                label: "Old Function Time",
+                                data: [1.00],
+                                backgroundColor: "rgba(255, 99, 132, 0.2)"
+                            },
+                            {
+                                label: "New Function Time",
+                                data: [0.10],
+                                backgroundColor: "rgba(54, 162, 235, 0.2)"
+                            }
+                        ]
+                    }
+                };
+
+                var ctx = document.getElementById("performance-chart").getContext("2d");
+                var myChart = new Chart(ctx, {
+                    type: "bar",
+                    data: allData.testcase1, 
+                    options: {
+                        responsive: true,
+                        scales: {
+                            xAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true
+                                }
+                            }],
+                            yAxes: [{
+                                display: true,
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+                });
+
+                document.getElementById('testcase-select').addEventListener('change', function() {
+                    var selectedTestcase = this.value;
+
+                    myChart.data = allData[selectedTestcase];
+                    myChart.update();
+                });
+                </script>
 
                 <!-- Navigation -->
                 <div class="navigation">
                     <a href="bucketing.html" class="prev">Previous</a>
                     <a href="monna.html" class="next">Next</a>
                 </div>
-
-                <!-- End of Main Content Area -->
             </div>
         </div>
     </body>
