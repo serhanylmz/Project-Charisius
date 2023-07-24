@@ -19,13 +19,30 @@
                     <li><a href="cc.html">Centered-Clipping</a></li>
                     <li><a href="monna.html">MoNNA</a></li>
                     <li><a href="https://www.serhanyilmaz.org/Project-Charisius/">Back to Main Page</a></li>
+                </ul>
                 <!-- End of Sidebar -->
             </div>
+            
             <div class="content">
-                <!-- Start of Main Content Area -->                
+                <!-- Start of Main Content Area -->
                 <h1>Charisius - Efficient Aggregators</h1>
-                <br>
                 <p>Charisius is a Python package that provides a series of highly optimized functions to perform efficient data aggregations. The functions leverage PyTorch's capabilities to achieve significant performance improvements, ranging from 25% to 1100% faster than their previous versions.</p>
+
+                <br>
+                <h2>Installation</h2>
+                <p>You can install Charisius from PyPi:</p>
+                <code>pip install charisius==0.0.1</code>
+				<p>The PyPI project page is found here: <a href = "https://pypi.org/project/charisius/0.0.1/">PyPI Official Release Page</a></p>
+                
+                <br>
+                <h2>Usage</h2>
+                <p>To use any function, simply import the function from the Charisius package:</p>
+                <code>
+                from charisius import geometric_median, krum
+                </code>
+                <p>Remember that all functions expect PyTorch tensors as inputs.</p>
+                
+                <!-- Functions documentation -->
                 <br>
                 <h2>Functions</h2>
                 <h3>geometric_median(vectors)</h3>
@@ -49,14 +66,7 @@
                 <h3>MoNNA(aggregator, vectors)</h3>
                 <p>Compute the N-f closest vectors to the pivot vector and return their average.</p>
 
-                <h2>Usage</h2>
-                <p>To use any function, simply import the function from the Charisius package:</p>
-                <code>
-                from charisius import geometric_median, krum
-                </code>
-                <p>Remember that all functions expect PyTorch tensors as inputs.</p>
-                
-                <h2>Author - Serhan YILMAZ</h2>
+                <h2>Author: Serhan YILMAZ</h2>
                 
                 <div class="navigation">
                     <a href="monna.html" class="prev">Previous</a>
