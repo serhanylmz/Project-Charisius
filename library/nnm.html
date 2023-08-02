@@ -14,19 +14,51 @@
                 <!-- Start of Sidebar -->
                 <h2>Documentation</h2>
                 <ul>
-                    <li><a href="getting_started.html">Getting Started</a></li>
-                    <li><a href="krum.html">Krum</a></li>
-                    <li><a href="multi_krum.html">Multi Krum</a></li>
-                    <li><a href="nnm.html">Nearest-Neighbor-Mixing</a></li>
-                    <li><a href="gm.html">Geometric Median</a></li>
-                    <li><a href="bucketing.html">Bucketing</a></li>
-                    <li><a href="cc.html">Centered-Clipping</a></li>
-                    <li><a href="monna.html">MoNNA</a></li>
+                    <li class="dropdown" onclick="toggleDropdown(this)">
+                        <div class="dropdown-toggle">Getting Started <span class="arrow"></span></div>
+                        <ul class="dropdown-menu">
+                            <li><a href="getting_started.html">Description</a></li>
+                            <li><a href="install.html">Installation</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" onclick="toggleDropdown(this)">
+                        <div class="dropdown-toggle">Aggregators <span class="arrow"></span></div>
+                        <ul class="dropdown-menu">
+                            <li><a href="krum.html">Krum</a></li>
+                            <li><a href="multi_krum.html">Multi Krum</a></li>
+                            <li><a href="nnm.html">Nearest-Neighbor-Mixing</a></li>
+                            <li><a href="gm.html">Geometric Median</a></li>
+                            <li><a href="bucketing.html">Bucketing</a></li>
+                            <li><a href="cc.html">Centered-Clipping</a></li>
+                            <li><a href="monna.html">MoNNA</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" onclick="toggleDropdown(this)">
+                        <div class="dropdown-toggle">Byzantine Attacks <span class="arrow"></span></div>
+                        <ul class="dropdown-menu">
+                            <li><a href="sf.html">Sign-Flipping</a></li>
+                            <li><a href="lf.html">Label-Flipping</a></li>
+                            <li><a href="foe.html">Fall Of Empires (FOE)</a></li>
+                            <li><a href="alie.html">A Little Is Enough (ALIE)</a></li>
+                            <li><a href="auto_foe.html">auto_FOE</a></li>
+                            <li><a href="auto_alie.html">auto_ALIE</a></li>
+                            <li><a href="mimic.html">Mimic</a></li>
+                            <li><a href="inf.html">Infinity</a></li>
+                        </ul>
+                    </li>
                     <li><a href="https://www.serhanyilmaz.org/Project-Charisius/">Back to Main Page</a></li>
-                    <!-- Add more functions as required -->
                 </ul>
                 <!-- End of Sidebar -->
             </div>
+            <script>
+                function toggleDropdown(element) {
+                    const menu = element.querySelector('.dropdown-menu');
+                    const arrow = element.querySelector('.arrow');
+                    menu.style.display = menu.style.display === 'none' || menu.style.display === '' ? 'block' : 'none';
+                    element.classList.toggle('open');
+                }
+            </script>
 
             <div class="content">
                 <!-- Start of Main Content Area -->
@@ -42,23 +74,22 @@
                 vectors = [...]
 
                 # Call nearest_neighbor_mixing function
-                result_old = charisius.nearest_neighbor_mixing_old(aggregator, vectors)
-                result_new = charisius.nearest_neighbor_mixing(aggregator, vectors)
+                result = charisius.nearest_neighbor_mixing(aggregator, vectors)
                 </code></pre>
 
                 <br>
 
                 <h3>Inputs</h3>
                 <ul>
-                    <li><code>aggregator</code>: object - The aggregator object containing the 'nb_byz' property.</li>
-                    <li><code>vectors</code>: list - The list of PyTorch Tensors to be processed.</li>
+                    <li><code class = "elm">aggregator: object - The aggregator object containing the 'nb_byz' property.</code></li>
+                    <li><code class = "elm">vectors: list - The list of PyTorch Tensors to be processed.</code></li>
                 </ul>
 
                 <br>
 
                 <h3>Outputs</h3>
                 <ul>
-                    <li><code>result_old, result_new</code>: torch.Tensor - The processed vectors after applying the nearest neighbor mixing function.</li>
+                    <li><code class = "elm">result: torch.Tensor - The processed vectors after applying the nearest neighbor mixing function.</code></li>
                 </ul>
 
 

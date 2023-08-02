@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Charisius Library Documentation</title>
+        <title>Krum - Charisius Library Documentation</title>
         <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
     </head>
     <body>
+        <script>hljs.highlightAll();</script>
         <div class="container">
             <div class="sidebar">
                 <!-- Start of Sidebar -->
@@ -55,44 +59,46 @@
                     element.classList.toggle('open');
                 }
             </script>
-            
-            
+
             <div class="content">
                 <!-- Start of Main Content Area -->
-                <h1>Charisius - Efficient Aggregators</h1>
-                <p>Charisius is a Python package that provides a series of highly optimized functions to perform efficient data aggregations. The functions leverage PyTorch's capabilities to achieve significant performance improvements, ranging from 25% to 2200% faster than their previous versions.</p>
+                <h2>Krum Function</h2>
+                <p>Here's how to use the Krum function:</p>
 
-                <!-- Functions documentation -->
+                <pre><code class="language-python">
+                # Import the library
+                import charisius
+
+                # Initialize aggregator and vectors
+                aggregator = ...
+                vectors = [...]
+
+                # Call krum function
+                result = charisius.krum(aggregator, vectors)
+                </code></pre>
+
                 <br>
-                <h2>Functions</h2>
-                <h3>geometric_median(vectors)</h3>
-                <p>Compute the geometric median of the provided vectors. It uses a smoothed weiszfeld algorithm, which is a gradient descent algorithm for the geometric median.</p>
 
-                <h3>krum(aggregator, vectors)</h3>
-                <p>Compute the krum of the vectors. This function computes all pairwise distances and returns the vector with the smallest score.</p>
+                <h3>Inputs</h3>
+                <ul>
+                    <li><code class="elm">aggregator: object - The aggregator object containing the 'nb_byz' property.</code></li>
+                    <li><code class="elm">vectors: list - The list of PyTorch Tensors to be processed.</code></li>
+                </ul>
 
-                <h3>multi_krum(aggregator, vectors)</h3>
-                <p>This function extends krum to return the average of k vectors with the lowest scores, where k is the number of vectors to average in the end.</p>
+                <br>
 
-                <h3>nearest_neighbor_mixing(aggregator, vectors, numb_iter=1)</h3>
-                <p>Replace every vector by the average of its nearest neighbors. The number of iterations is determined by the `numb_iter` parameter.</p>
+                <h3>Outputs</h3>
+                <ul>
+                    <li><code class = "elm">result: torch.Tensor - The vector with smallest Krum score.</code></li>
+                </ul>
 
-                <h3>bucketing(aggregator, vectors)</h3>
-                <p>Organize vectors into buckets and compute the average for each bucket. The buckets are determined by the `bucket_size` attribute of the `aggregator`.</p>
-
-                <h3>centered_clipping(aggregator, vectors, L_iter=3, clip_thresh=1)</h3>
-                <p>Perform the centered clipping on vectors. The number of iterations and the clip threshold can be controlled by `L_iter` and `clip_thresh` parameters respectively.</p>
-
-                <h3>MoNNA(aggregator, vectors)</h3>
-                <p>Compute the N-f closest vectors to the pivot vector and return their average.</p>
-
-                <h2>Author: Serhan YILMAZ</h2>
-                
+                <br>
+                <br>
+                <!-- Navigation -->
                 <div class="navigation">
-                    <a href="inf.html" class="prev">Previous</a>
-                    <a href="install.html" class="next">Next</a>
+                    <a href="mimic.html" class="prev">Previous</a>
+                    <a href="getting_started.html" class="next">Next</a>
                 </div>
-                <!-- End of Main Content Area -->
             </div>
         </div>
     </body>

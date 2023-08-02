@@ -58,39 +58,45 @@
             
             
             <div class="content">
-                <!-- Start of Main Content Area -->
-                <h1>Charisius - Efficient Aggregators</h1>
-                <p>Charisius is a Python package that provides a series of highly optimized functions to perform efficient data aggregations. The functions leverage PyTorch's capabilities to achieve significant performance improvements, ranging from 25% to 2200% faster than their previous versions.</p>
-
-                <!-- Functions documentation -->
-                <br>
-                <h2>Functions</h2>
-                <h3>geometric_median(vectors)</h3>
-                <p>Compute the geometric median of the provided vectors. It uses a smoothed weiszfeld algorithm, which is a gradient descent algorithm for the geometric median.</p>
-
-                <h3>krum(aggregator, vectors)</h3>
-                <p>Compute the krum of the vectors. This function computes all pairwise distances and returns the vector with the smallest score.</p>
-
-                <h3>multi_krum(aggregator, vectors)</h3>
-                <p>This function extends krum to return the average of k vectors with the lowest scores, where k is the number of vectors to average in the end.</p>
-
-                <h3>nearest_neighbor_mixing(aggregator, vectors, numb_iter=1)</h3>
-                <p>Replace every vector by the average of its nearest neighbors. The number of iterations is determined by the `numb_iter` parameter.</p>
-
-                <h3>bucketing(aggregator, vectors)</h3>
-                <p>Organize vectors into buckets and compute the average for each bucket. The buckets are determined by the `bucket_size` attribute of the `aggregator`.</p>
-
-                <h3>centered_clipping(aggregator, vectors, L_iter=3, clip_thresh=1)</h3>
-                <p>Perform the centered clipping on vectors. The number of iterations and the clip threshold can be controlled by `L_iter` and `clip_thresh` parameters respectively.</p>
-
-                <h3>MoNNA(aggregator, vectors)</h3>
-                <p>Compute the N-f closest vectors to the pivot vector and return their average.</p>
-
-                <h2>Author: Serhan YILMAZ</h2>
+                <div id="location">
+                    <h2>Our Location</h2>
+                    <p>We are located in the 3rd floor of the INR building at EPFL Lausanne Campus!</p>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d171.59264420879026!2d6.562653859977199!3d46.51835707756426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c30fce76c0113%3A0x26905d6a7e370bb2!2sINR%2C%20Rte%20J-D.Colladon%2C%201015%20Ecublens!5e0!3m2!1str!2sch!4v1687793623766!5m2!1str!2sch" width="80%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+            
+                </div>
+                <div id="contribution-form">
+                    <h2>Contribute</h2>
+                    <p>Please reach us from the form below for contributions!</p>
+                    <div class="form-row">
+                        <form action="https://formspree.io/f/meqbjgon" method="POST">
+                            <div class="form-field">
+                                <label for="name">Name: </label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="surname">Surname: </label>
+                                <input type="text" id="surname" name="surname" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="email">Email: </label>
+                                <input type="text" id="email" name="email" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="query">Query: </label>
+                                <input type="text" id="query" name="query" required>
+                            </div>
+                            <!-- Add more form fields as needed -->
+                            <input type="submit" value="Submit">
+                        </form>
+                    </div>
+                    
+                </div>
                 
                 <div class="navigation">
-                    <a href="inf.html" class="prev">Previous</a>
-                    <a href="install.html" class="next">Next</a>
+                    <a href="install.html" class="prev">Previous</a>
+                    <a href="krum.html" class="next">Next</a>
                 </div>
                 <!-- End of Main Content Area -->
             </div>
