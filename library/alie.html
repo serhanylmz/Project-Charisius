@@ -61,35 +61,26 @@
             </script>
 
             <div class="content">
-                <!-- Start of Main Content Area -->
-                <h2>Krum Function</h2>
-                <p>Here's how to use the Krum function:</p>
+                <h2>A Little Is Enough Function</h2>
+                <p>Details about the A Little Is Enough attack method.</p>
 
                 <pre><code class="language-python">
-                # Import the library
-                import charisius
-
-                # Initialize aggregator and vectors
-                aggregator = ...
-                vectors = [...]
-
-                # Call krum function
-                result = charisius.krum(aggregator, vectors)
+                def a_little_is_enough(honest_vectors, attack_factor=3, negative=False, **kwargs):
+                    ...
+                    return stacked_vectors.mean(dim=0).add(attack_vector, alpha=attack_factor)
                 </code></pre>
-
-                <br>
 
                 <h3>Inputs</h3>
                 <ul>
-                    <li><code class="elm">aggregator: object - The aggregator object containing the 'nb_byz' property.</code></li>
-                    <li><code class="elm">vectors: list - The list of PyTorch Tensors to be processed.</code></li>
+                    <li><code class="elm">honest_vectors: list - List of honest vectors for processing.</code></li>
+                    <li><code class="elm">attack_factor: int - Factor controlling the magnitude of the attack vector.</code></li>
+                    <li><code class="elm">negative: bool - Controls the sign of the attack factor.</code></li>
+                    <li><code class="elm">**kwargs: dictionary - Other keyword arguments.</code></li>
                 </ul>
-
-                <br>
 
                 <h3>Outputs</h3>
                 <ul>
-                    <li><code class = "elm">result: torch.Tensor - The vector with smallest Krum score.</code></li>
+                    <li><code class="elm">torch.Tensor - The processed Tensor after applying the A Little Is Enough attack.</code></li>
                 </ul>
 
                 <br>
@@ -97,8 +88,8 @@
 
                 <!-- Navigation -->
                 <div class="navigation">
-                    <a href="contact.html" class="prev">Previous</a>
-                    <a href="multi_krum.html" class="next">Next</a>
+                    <a href="foe.html" class="prev">Previous</a>
+                    <a href="auto_foe.html" class="next">Next</a>
                 </div>
             </div>
         </div>

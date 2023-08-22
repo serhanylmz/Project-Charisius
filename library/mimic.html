@@ -61,35 +61,26 @@
             </script>
 
             <div class="content">
-                <!-- Start of Main Content Area -->
-                <h2>Krum Function</h2>
-                <p>Here's how to use the Krum function:</p>
+                <h2>Mimic Function</h2>
+                <p>Details about the Mimic attack method.</p>
 
                 <pre><code class="language-python">
-                # Import the library
-                import charisius
-
-                # Initialize aggregator and vectors
-                aggregator = ...
-                vectors = [...]
-
-                # Call krum function
-                result = charisius.krum(aggregator, vectors)
+                def mimic(attack, honest_vectors, current_step, **kwargs):
+                    ...
+                    return honest_vectors[best_worker_to_mimic]
                 </code></pre>
-
-                <br>
 
                 <h3>Inputs</h3>
                 <ul>
-                    <li><code class="elm">aggregator: object - The aggregator object containing the 'nb_byz' property.</code></li>
-                    <li><code class="elm">vectors: list - The list of PyTorch Tensors to be processed.</code></li>
+                    <li><code class="elm">attack: object - Attack object containing attack details.</code></li>
+                    <li><code class="elm">honest_vectors: list - List of honest vectors for processing.</code></li>
+                    <li><code class="elm">current_step: int - Current iteration or step number.</code></li>
+                    <li><code class="elm">**kwargs: dictionary - Other keyword arguments.</code></li>
                 </ul>
-
-                <br>
 
                 <h3>Outputs</h3>
                 <ul>
-                    <li><code class = "elm">result: torch.Tensor - The vector with smallest Krum score.</code></li>
+                    <li><code class="elm">torch.Tensor - The processed Tensor after applying the Mimic attack.</code></li>
                 </ul>
 
                 <br>
@@ -97,8 +88,8 @@
 
                 <!-- Navigation -->
                 <div class="navigation">
-                    <a href="contact.html" class="prev">Previous</a>
-                    <a href="multi_krum.html" class="next">Next</a>
+                    <a href="auto_alie.html" class="prev">Previous</a>
+                    <a href="inf.html" class="next">Next</a>
                 </div>
             </div>
         </div>

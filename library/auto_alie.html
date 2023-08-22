@@ -61,35 +61,26 @@
             </script>
 
             <div class="content">
-                <!-- Start of Main Content Area -->
-                <h2>Krum Function</h2>
-                <p>Here's how to use the Krum function:</p>
+                <h2>Auto ALIE Function</h2>
+                <p>Details about the Auto ALIE attack method.</p>
 
                 <pre><code class="language-python">
-                # Import the library
-                import charisius
-
-                # Initialize aggregator and vectors
-                aggregator = ...
-                vectors = [...]
-
-                # Call krum function
-                result = charisius.krum(aggregator, vectors)
+                def auto_ALIE(honest_vectors, aggregator, nb_byz, **kwargs):
+                    ...
+                    return a_little_is_enough(honest_vectors, attack_factor=best_factor)
                 </code></pre>
-
-                <br>
 
                 <h3>Inputs</h3>
                 <ul>
-                    <li><code class="elm">aggregator: object - The aggregator object containing the 'nb_byz' property.</code></li>
-                    <li><code class="elm">vectors: list - The list of PyTorch Tensors to be processed.</code></li>
+                    <li><code class="elm">honest_vectors: list - List of honest vectors for processing.</code></li>
+                    <li><code class="elm">aggregator: function - The function used for aggregation.</code></li>
+                    <li><code class="elm">nb_byz: int - Number of Byzantine nodes.</code></li>
+                    <li><code class="elm">**kwargs: dictionary - Other keyword arguments.</code></li>
                 </ul>
-
-                <br>
 
                 <h3>Outputs</h3>
                 <ul>
-                    <li><code class = "elm">result: torch.Tensor - The vector with smallest Krum score.</code></li>
+                    <li><code class="elm">torch.Tensor - The processed Tensor after applying the Auto ALIE attack.</code></li>
                 </ul>
 
                 <br>
@@ -97,8 +88,8 @@
 
                 <!-- Navigation -->
                 <div class="navigation">
-                    <a href="contact.html" class="prev">Previous</a>
-                    <a href="multi_krum.html" class="next">Next</a>
+                    <a href="auto_foe.html" class="prev">Previous</a>
+                    <a href="mimic.html" class="next">Next</a>
                 </div>
             </div>
         </div>
