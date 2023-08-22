@@ -63,8 +63,10 @@
                 <p>Charisius is a Python package that provides a series of highly optimized functions to perform efficient data aggregations. The functions leverage PyTorch's capabilities to achieve significant performance improvements, ranging from 25% to 2200% faster than their previous versions.</p>
 
                 <!-- Functions documentation -->
+                <!-- Functions documentation -->
                 <br>
                 <h2>Functions</h2>
+
                 <h3>geometric_median(vectors)</h3>
                 <p>Compute the geometric median of the provided vectors. It uses a smoothed weiszfeld algorithm, which is a gradient descent algorithm for the geometric median.</p>
 
@@ -85,6 +87,35 @@
 
                 <h3>MoNNA(aggregator, vectors)</h3>
                 <p>Compute the N-f closest vectors to the pivot vector and return their average.</p>
+
+                <!-- Byzantine Attacks documentation -->
+                <br>
+                <h2>Byzantine Attacks</h2>
+
+                <h3>Sign Flipping</h3>
+                <p>Performs the sign flipping attack on the honest vectors, inverting the direction of the averaged vector.</p>
+
+                <h3>Label Flipping</h3>
+                <p>Averages the flipped vectors without altering their direction.</p>
+
+                <h3>Fall of Empires</h3>
+                <p>Introduces a distortion to the average of the honest vectors by adjusting its magnitude using an attack factor.</p>
+
+                <h3>Auto FOE</h3>
+                <p>An automated variation of the Fall of Empires attack, which determines the optimal attack factor to maximize the disruption.</p>
+
+                <h3>A Little Is Enough</h3>
+                <p>Distorts the honest vectors' average by adding an attack vector with magnitude controlled by an attack factor.</p>
+
+                <h3>Auto ALIE</h3>
+                <p>An automated version of the A Little Is Enough attack, which computes the optimal attack factor for maximum disruption.</p>
+
+                <h3>Mimic</h3>
+                <p>Attempts to mimic a certain worker's behavior based on a heuristic. Depending on the learning phase, it either mimics the first worker or updates its heuristic to mimic the most influential worker.</p>
+
+                <h3>Infinity Attack</h3>
+                <p>Returns a vector filled with infinity values, potentially disrupting aggregations depending on the aggregator's behavior with infinite values.</p>
+
 
                 <h2>Author: Serhan YILMAZ</h2>
                 
