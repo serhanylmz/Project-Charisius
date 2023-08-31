@@ -65,7 +65,7 @@
                 <p>Details about the Auto FOE attack method.</p>
 
                 <pre><code class="language-python">
-                def auto_FOE(honest_vectors, aggregator, nb_byz, **kwargs):
+                def auto_FOE(honest_vectors, aggregator, nb_byz):
                     ...
                     return fall_of_empires(honest_vectors, attack_factor=best_factor)
                 </code></pre>
@@ -75,7 +75,6 @@
                     <li><code class="elm">honest_vectors: list - List of honest vectors for processing.</code></li>
                     <li><code class="elm">aggregator: function - The function used for aggregation.</code></li>
                     <li><code class="elm">nb_byz: int - Number of Byzantine nodes.</code></li>
-                    <li><code class="elm">**kwargs: dictionary - Other keyword arguments.</code></li>
                 </ul>
 
                 <h3>Outputs</h3>

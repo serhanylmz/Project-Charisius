@@ -65,7 +65,7 @@
                 <p>Details about the A Little Is Enough attack method.</p>
 
                 <pre><code class="language-python">
-                def a_little_is_enough(honest_vectors, attack_factor=3, negative=False, **kwargs):
+                def a_little_is_enough(honest_vectors, attack_factor=3, negative=False):
                     ...
                     return stacked_vectors.mean(dim=0).add(attack_vector, alpha=attack_factor)
                 </code></pre>
@@ -75,7 +75,6 @@
                     <li><code class="elm">honest_vectors: list - List of honest vectors for processing.</code></li>
                     <li><code class="elm">attack_factor: int - Factor controlling the magnitude of the attack vector.</code></li>
                     <li><code class="elm">negative: bool - Controls the sign of the attack factor.</code></li>
-                    <li><code class="elm">**kwargs: dictionary - Other keyword arguments.</code></li>
                 </ul>
 
                 <h3>Outputs</h3>

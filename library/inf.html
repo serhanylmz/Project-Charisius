@@ -65,14 +65,14 @@
                 <p>Details about the Infinity attack method.</p>
 
                 <pre><code class="language-python">
-                def inf(attack, **kwargs):
+                def inf(model_size, device):
                     return torch.ones(attack.model_size, device=attack.device) * float('inf')
                 </code></pre>
 
                 <h3>Inputs</h3>
                 <ul>
-                    <li><code class="elm">attack: object - Attack object containing attack details.</code></li>
-                    <li><code class="elm">**kwargs: dictionary - Other keyword arguments.</code></li>
+                    <li><code class="elm">model_size: int - Size of the model.</code></li>
+                    <li><code class="elm">device: str - Device to use for the attack.</code></li>
                 </ul>
 
                 <h3>Outputs</h3>

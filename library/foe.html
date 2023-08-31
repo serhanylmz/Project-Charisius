@@ -65,7 +65,7 @@
                 <p>Details about the Fall of Empires attack method.</p>
                 
                 <pre><code class="language-python">
-                def fall_of_empires(honest_vectors, attack_factor=3, negative=False, **kwargs):
+                def fall_of_empires(honest_vectors, attack_factor=3, negative=False):
                     if negative:
                         attack_factor = - attack_factor
                     return torch.stack(honest_vectors).mean(dim=0).mul(1 - attack_factor)
@@ -76,7 +76,6 @@
                     <li><code class="elm">honest_vectors: list - List of honest vectors for processing.</code></li>
                     <li><code class="elm">attack_factor: int - Factor controlling the magnitude of the attack vector to be added.</code></li>
                     <li><code class="elm">negative: bool - Controls the sign of the attack factor.</code></li>
-                    <li><code class="elm">**kwargs: dictionary - Other keyword arguments.</code></li>
                 </ul>
 
                 <h3>Outputs</h3>

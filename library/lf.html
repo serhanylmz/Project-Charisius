@@ -65,14 +65,13 @@
                 <p>Details about the Labelflipping attack method.</p>
                 
                 <pre><code class="language-python">
-                def labelflipping(flipped_vectors, **kwargs):
+                def labelflipping(flipped_vectors):
                     return torch.stack(flipped_vectors).mean(dim=0)
                 </code></pre>
                 
                 <h3>Inputs</h3>
                 <ul>
                     <li><code class="elm">flipped_vectors: list - List of vectors to flip labels on.</code></li>
-                    <li><code class="elm">**kwargs: dictionary - Other keyword arguments.</code></li>
                 </ul>
 
                 <h3>Outputs</h3>

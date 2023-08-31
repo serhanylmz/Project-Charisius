@@ -65,17 +65,18 @@
                 <p>Details about the Mimic attack method.</p>
 
                 <pre><code class="language-python">
-                def mimic(attack, honest_vectors, current_step, **kwargs):
+                def mimic(learning_phase_mimic, update_mimic_heuristic, z_mimic, honest_vectors, current_step):
                     ...
                     return honest_vectors[best_worker_to_mimic]
                 </code></pre>
 
                 <h3>Inputs</h3>
                 <ul>
-                    <li><code class="elm">attack: object - Attack object containing attack details.</code></li>
+                    <li><code class="elm">learning_phase_mimic: bool - If True, the Mimic attack is applied.</code></li>
+                    <li><code class="elm">update_mimic_heuristic: Function - Function to update mu_mimic and z_mimic only if still in learning phase</code></li>
+                    <li><code class="elm">z_mimic: float - The z-score threshold for the Mimic heuristic.</code></li>
                     <li><code class="elm">honest_vectors: list - List of honest vectors for processing.</code></li>
                     <li><code class="elm">current_step: int - Current iteration or step number.</code></li>
-                    <li><code class="elm">**kwargs: dictionary - Other keyword arguments.</code></li>
                 </ul>
 
                 <h3>Outputs</h3>
