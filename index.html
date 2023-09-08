@@ -7,6 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="favicon-32x32-black.png" id="favicon">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
     <script>
         function setFavicon() {
         const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -52,41 +56,78 @@
         <p>This is the section where the relevant research on the topic will be listed. Research includes but not limited to relevant papers on the field and other benchmarks.</p>
     </section>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            function fetchResults() {
+                const byzantineValue = document.getElementById('byzantineValue').value;
+    
+                fetch('/fetch_results', {
+                    method: 'POST',
+                    body: new URLSearchParams({ 'byzantineValue': byzantineValue })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const resultsBody = document.getElementById('resultsBody');
+                    resultsBody.innerHTML = '';  // Clear existing rows
+    
+                    data.forEach(row => {
+                        const tr = document.createElement('tr');
+    
+                        const garTd = document.createElement('td');
+                        garTd.textContent = row.gar;
+                        tr.appendChild(garTd);
+    
+                        const bestAccTd = document.createElement('td');
+                        bestAccTd.textContent = row.best_accuracy;
+                        tr.appendChild(bestAccTd);
+    
+                        const worstBestAccTd = document.createElement('td');
+                        worstBestAccTd.textContent = row.worst_best_accuracy;
+                        tr.appendChild(worstBestAccTd);
+    
+                        // Add other fields here similarly
+    
+                        resultsBody.appendChild(tr);
+                    });
+                });
+            }
+    
+            // Call it once to populate the table on page load
+            fetchResults();
+    
+            // Assuming you want to re-fetch results when the byzantineValue changes
+            document.getElementById('byzantineValue').addEventListener('change', fetchResults);
+        });
+    </script>
+    
+
     <section id="leaderboard">
         <h2>Leaderboard</h2>
-        <div class = "table-responsive">
-            <table id="leaderboard" style="width: 100%">
+
+        <label for="byzantineValue">Select Byzantine Value:</label>
+        <select id="byzantineValue" onchange="fetchResults()">
+            <option value="1">1</option>
+            <option value="3">3</option>
+            <option value="7">7</option>
+        </select>
+
+        <div class="table-responsive">
+            <table style="width: 100%">
                 <thead>
-                <tr>
-                    <th>Rank</th>
-                    <th>Method</th>
-                    <th>Standard<br/>accuracy</th>
-                    <th>AutoAttack<br/>robust<br/>accuracy</th>
-                    <th>Best known<br/>robust<br/>accuracy</th>
-                    <th>AA eval.<br/>potentially<br/>unreliable</th>
-                    <th>Extra <br/>data</th>
-                    <th>Architecture</th>
-                    <th>Venue</th>
-                </tr>
+                    <tr>
+                        <th>Gradient Aggregation Rule (GAR)</th>
+                        <th>Best <br />Accuracy</th>
+                        <th>Worst of the <br />Best<br />Accuracies</th>
+                        <!-- Add other headers here -->
+                    </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td><a href="#">Method Name</a></td>
-                    <td>Standard Accuracy</td>
-                    <td>AutoAttack Robust Accuracy</td>
-                    <td>Best Known Robust Accuracy</td>
-                    <td>Potentially Unreliable Evaluation</td>
-                    <td>Extra Data</td>
-                    <td>Architecture</td>
-                    <td>Venue</td>
-                </tr>
-                <!-- Add more rows as needed -->
+                <tbody id="resultsBody">
+                    <!-- Rows will be appended here dynamically -->
                 </tbody>
             </table>
         </div>
-        
     </section>
+    
 
     <section id="analysis">
         <h2>Analysis</h2>
